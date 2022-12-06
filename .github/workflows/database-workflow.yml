@@ -18,4 +18,5 @@ jobs:
         with:
           connection-string: ${{ secrets.AZURE_SQL_CONNSTR }}
           path: ./_database/AzureDataConference.sqlproj
+          action: 'publish'
          
