@@ -31,7 +31,7 @@ begin tran
     
 	select @@trancount
 
-    /* STOP HERE AND EXECUTE IN ANOTHER SESSION THE "connection-b.sql" SCRIPT BEFORE PROCEEDING! */
+    /* STOP HERE AND EXECUTE IN ANOTHER SESSION THE "...-2.sql" SCRIPT BEFORE PROCEEDING! */
 
 commit tran
 --or rollback tran
