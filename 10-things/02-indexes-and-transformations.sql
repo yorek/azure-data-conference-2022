@@ -19,6 +19,8 @@ create table [dbo].[timesheet]
 go
 */
 
+-- Explicit transformations / conversions
+
 select * from dbo.timesheet
 go
 
@@ -30,12 +32,15 @@ go
 
 create nonclustered index ixnc1 on dbo.timesheet(birthday)
 
-select * from dbo.timesheet where datepart(month, birthday) = 8
+select * from dbo.timesheet where datepart(month, birthday) = 4
 
-select * from dbo.timesheet where datepart(year, birthday) = 2000
+select * from dbo.timesheet where birthday >= '2000-04-01' and birthday < '2000-05-01' 
 
------
+drop index ixnc1 on dbo.timesheet
 
+-- Implicit transformations / conversions
+
+drop table if exists dbo.timesheet_test;
 select * into dbo.timesheet_test from dbo.timesheet
 go
 
@@ -52,10 +57,10 @@ go
 create nonclustered index ixc1 on dbo.timesheet_test (last_name)
 go
 
-select * from dbo.timesheet_test where last_name = 'Something'
+select * from dbo.timesheet_test where last_name = 'Hovert'
 go
 
-select * from dbo.timesheet_test where last_name = N'Something'
+select * from dbo.timesheet_test where last_name = N'Hovert'
 go
 
 drop table dbo.timesheet_test
