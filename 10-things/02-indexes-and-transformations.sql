@@ -35,6 +35,9 @@ create nonclustered index ixnc1 on dbo.timesheet(birthday)
 select * from dbo.timesheet where datepart(month, birthday) = 4
 
 select * from dbo.timesheet where birthday >= '2000-04-01' and birthday < '2000-05-01' 
+-- Hint: always specify the date in the  ISO 8601 format yyyy-mm-dd
+-- to avoid issues for different formats
+-- https://learn.microsoft.com/sql/t-sql/data-types/datetime-transact-sql?view=sql-server-ver16#_datetime
 
 drop index ixnc1 on dbo.timesheet
 
