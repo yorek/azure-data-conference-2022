@@ -1,0 +1,8 @@
+{
+    "IsEncrypted": false,
+    "Values": {
+        "AzureWebJobsStorage": "UseDevelopmentStorage=true",
+        "FUNCTIONS_WORKER_RUNTIME": "dotnet",
+        "SqlConnectionString": "Data Source=.database.windows.net; Initial Catalog=AzureDataConference; User Id=azure_data_conf_user; Password=iods1d-HJK2s.12d9MNG"
+    }
+}
