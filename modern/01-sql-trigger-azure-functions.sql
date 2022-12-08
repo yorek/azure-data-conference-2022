@@ -31,6 +31,9 @@ alter table dbo.todos
 enable change_tracking;
 go
 
+-- run the azure function with the SQL trigger, then
+-- check the created objects
+
 select * from sys.schemas
 go
 
@@ -43,13 +46,13 @@ go
 select * from az_func.Leases_9a3bc680173d0ce6_1490820373
 go
 
+-- do some changes and watch the Azure Function being triggered
 
 insert into dbo.todos 
     (title, [url], completed)
 values
     ('My first todo', 'http://localhost/todo/1', 0)
 go
-
 
 insert into dbo.todos 
     (title, [url], completed)
@@ -58,15 +61,13 @@ values
     ('And even more!', 'http://todo/', 1)
 go
 
-select * from dbo.todos
-go
-
-update dbo.todos set [order] = 1, url = 'http://todo/4ff0b801-cdfd-45ff-a44b-823f87a58f96' where id = '4ff0b801-cdfd-45ff-a44b-823f87a58f96'
+update dbo.todos set [order] = 1, url = 'http://todo/xyz' where id = '4ff0b801-cdfd-45ff-a44b-823f87a58f96'
 go
 
 begin tran
+
 delete from dbo.todos where [order] is null
 
 commit tran
-
+go
 
